@@ -1,0 +1,267 @@
+body{
+  background: #eee;
+}
+.content,.footer{
+  width: 940px;
+  margin: 0 auto;
+  text-align: center;
+}
+img{
+  display: inline-block;
+}
+.top{
+  width:100%;
+  height:24px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  text-align: right;
+  line-height: 24px;
+}
+.cm {
+  width: 1190px;
+}
+.language,.welcome{
+  float: right;
+}
+.language a{
+  font-size: 10px;
+  color: #fff;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  margin-top: 4px;
+  background-color: #656565;
+  border-radius: 2px;
+}
+.language .active{
+  background-color: #d71921;
+}
+.banner{
+  position: relative;
+}
+.pic{
+  position: relative;
+  width:100%;
+  height: 420px;
+  overflow: hidden;
+  top: -1px;
+}
+.pic ul{
+  position: relative;
+  height: 420px;
+  width: 400%;
+}
+.pic ul li{
+  float: left;
+  height: 420px;
+  left: 100%;
+  width:25%;
+}
+.pic ul li a{
+  display: inline-block;
+  width: 100%;
+  height: 420px;
+}
+.pic ul li a img{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.thumb ul{
+  position: absolute;
+  top: 380px;
+  left: 650px;
+}
+.thumb ul li{
+  width: 14px;
+  height: 14px;
+  background-color:#999;
+  margin: 0 3px;
+  border-radius: 50%;
+  float: left;
+}
+.thumb ul .banner-active{
+  background-color:#e7242c;
+}
+.homePage{
+  margin:25px auto;
+  display: inline-block;
+  text-align: center;
+  padding: 0 0 20px;
+}
+.homePage .item{
+  width: 300px;
+  overflow: hidden;
+  float: left;
+}
+.img a{
+  position: relative;
+  overflow: hidden;
+}
+.img a,.img a img{
+  display: inline-block;
+  width: 300px;
+  height: 220px;
+  transition:0.3s ease-in-out;
+}
+.img a img:hover{
+  transform: scale(1.1);
+}
+.homePage .item1{
+  margin-right: 30px
+}
+.text {
+  padding:10px 0 0;
+}
+.text .text-top{
+  display: block;
+  padding-bottom: 5px;
+  font-size: 32px;
+  color: #000;
+}
+.text a{
+height: 22px;
+line-height: 22px;
+font-size: 18px;
+margin-top: 6px;
+display: inline-block;
+}
+.text-info{
+  display: inline-block;
+  width:24px;
+  height: 24px;
+  background: url(../images/public.png) no-repeat 0 -95px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.text a:hover{
+  color: #d71921;
+}
+.text a:hover .text-info{
+  background: url(../images/public.png) no-repeat 0 -116px;
+}
+.footer .share {
+   border-bottom: 1px #c1c9cf solid;
+   padding-bottom: 10px;
+}
+.footer .share .link{
+  height: 36px;
+  line-height: 36px;
+}
+.footer .share .link .follow{
+  white-space: nowrap;
+  color: #686868;
+  font-size: 24px;
+  float: left;
+}
+.footer .share .link a, .footer .share .link a img {
+  width: 36px;
+  height: 36px;
+  float: left;
+  margin: 0 5px 0 10px;
+}
+.more{
+  width: 66px;
+  height: 29px;
+  text-align: center;
+  line-height: 24px;
+  float: left;
+  font-size: 12px;
+  margin: 5px 0 0px;
+  cursor: pointer;
+  background: url(../images/share_more_bg.png) no-repeat;
+}
+.more:hover{
+  color: #d71921;
+}
+.tsina_open{
+  font-size: 12px;
+  padding: 15px 0 ;
+}
+.tsina_open .tsina_batconcern ul{
+  overflow: auto;
+  padding: 0 16px;
+}
+.tsina_open .tsina_batconcern ul li{
+  float: left;
+  width: 107px;
+}
+.introduction .headpic{
+  width: 60px;
+  height:60px;
+  margin: 0 auto;
+}
+.introduction .headpic a{
+  display: block;
+  width: 56px;
+  height: 56px;
+  border: 2px solid #a8de86;
+  position: relative;
+}
+.introduction .headpic a span{
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: url(../images/checkbox.gif) no-repeat 0 0;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+.introduction .headpic a img{
+  border: 1px solid #ccc;
+  padding: 2px;
+  height: 50px;
+  width: 50px;
+}
+.name a{
+  color: #0082CB;
+}
+.name a span{
+  display: inline-block;
+  width:14px;
+  height: 12px;
+  vertical-align: middle;
+  background: url(../images/ico.png) no-repeat 0 -232px;
+}
+.vf_info{
+  color: #666;
+}
+.btn_con{
+  text-align: center;
+  margin:10px 13px;
+  font-size: 14px;
+}
+.btngreen_l{
+  display: inline-block;
+  height: 27px;
+  line-height: 27px;
+  margin-right: 24px;
+  color: #fff;
+  width:100px;
+  background: #74c450;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.regmib{
+  color: #0082CB;
+}
+.copyright{
+  border-top: 1px #fff solid;
+  padding: 12px 0;
+  font-size: 13px; 
+}
+.copyright .nav{
+  display: block;
+  padding:0 0 10px;
+}
+.copyright .nav .mlr{
+  margin: 0 15px;
+}
+.copyright a:hover{
+  color: #d71921;
+}
+.copyright .copy a img{
+  vertical-align: middle;
+}

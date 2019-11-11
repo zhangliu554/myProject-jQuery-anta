@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>安踏官网注册</title>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+  <header></header>
+  <section>
+    <div class="register-box">
+      <div class="register-wrap">
+        <div class="regheader" style="width: 100%; height: 100px;">
+          <div class="regheader-logo">
+            <img src="images/logo.png">
+          </div>
+        </div>
+        <div class="register-btn-box">
+          <a class="register-btn-active register-btn">手机注册<span class="register-btn-icon">◆</span></a><a
+            class="register-btn">邮箱注册<span class="register-btn-icon">◆</span></a>
+        </div>
+        <div class="username_registerphone_box username-regster-box">
+          <div class="main-box">
+            <span class="main-box-text">请输入手机号注册：</span>
+            <form action="registerpass.html" method="post" class="oForm" onsubmit="return check()">
+              <input type="text" placeholder="手机号码" class="phone-text" name="phone">
+              <input class="code" type="text" maxlength="4" placeholder="请输入验证码">
+              <div class="code-num">
+                <span class="code-num-r"></span>
+                <span class="code-num-r"></span>
+                <span class="code-num-r"></span>
+                <span class="code-num-r"></span>
+              </div>
+              <div class="agreed-btn">
+                <input type="checkbox" id="agreed-btn" class="agreed-btn-r" name="agreed"><label>我已充分阅读、理解并接受<span
+                    style="color: #ccc;cursor: pointer;" class="privacy-policy">隐私政策</span>的全部内容</label>
+              </div>
+              <div class="error">
+                <span class="error-tip"></span>
+              </div>
+              <input class="user_mobile_submit" value="确认" type="submit">
+            </form>
+          </div>
+        </div>
+        <div class="username_registeremail_box username-regster-box">
+          <div class="main-box">
+            <span class="main-box-text">请输入邮箱地址注册：</span>
+            <form action="index.html" method="post" class="oForm" onsubmit="return check2()">
+              <input type="text" placeholder="邮箱地址" class="email-text">
+              <input type="password" placeholder="登录密码" class="email-password">
+              <input class="code" type="text" maxlength="4" placeholder="请输入验证码">
+              <div class="code-num">
+                <span class="code-num-r"></span>
+                <span class="code-num-r"></span>
+                <span class="code-num-r"></span>
+                <span class="code-num-r"></span>
+              </div>
+              <div class="agreed-btn">
+                <input type="checkbox" id="agreed-btn2" class="agreed-btn-r" name="agreed"><label>我已充分阅读、理解并接受<span
+                    style="color: #ccc;cursor: pointer;" class="privacy-policy">隐私政策</span>的全部内容</label>
+              </div>
+              <div class="error">
+                <span class="error-tip"></span>
+              </div>
+              <input class="user_mobile_submit" value="确认" type="submit">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer></footer>
+</body>
+</html>
+<script src="js/jQuery.js"></script>
+<script src="js/code.js"></script>
+<script>
+  $("header").load("loginpublic.html header", function () { });
+  $("footer").load("loginpublic.html footer", function () {
+    $("footer p").css({
+      fontSize: 14
+    })
+  });
+  $(function () {
+    $(".username_registerphone_box").stop().show().siblings(".username_registeremail_box").stop().hide();
+    $(".register-btn").click(function () {
+      $(this).addClass("register-btn-active").siblings().removeClass("register-btn-active");
+      index = $(this).index();
+      // $(".register-btn-box .register-btn-icon").eq(index).show().siblings(".register-btn-box .register-btn-icon").hide();
+      $(".username-regster-box").eq(index).show().siblings(".username-regster-box").hide();
+      // console.log(index);
+    })
+  })
+  function check(){
+    let regMobile = /^1[3,5,8]\d{9}$/;
+    if ($(".phone-text").val() == '') {
+      $(".error-tip").eq(0).show(function () {
+        $(this).html('<span></span>请输入注册手机号码')
+      })
+      return false;
+    }
+    if (!regMobile.test($(".phone-text").val())) {
+      $(".error-tip").eq(0).show(function () {
+        $(this).html('<span></span>请正确输入注册手机号码')
+      })
+      return false;
+    }
+    if ($(".code").val() != $(".code-num").eq(0).children().text()) {
+      $(".error-tip").eq(0).show(function () {
+        $(this).html('<span></span>请输入正确的验证码！')
+      })
+      return false;
+    }
+    let isSuccess = 1;
+    let agreedVal = $('input:checkbox[name="agreed"]').prop("checked");
+    if (!agreedVal) {
+      $(".error-tip").eq(0).show(function () {
+        $(this).html('<span></span>请先阅读并接受隐私政策！')
+      })
+      isSuccess = 0;
+    }
+    if (isSuccess == 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  function check2(){
+    console.log($(".code-num").eq(1).children().text());
+    let regEmail = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+    if ($(".email-text").val() == '') {
+      $(".error-tip").eq(1).show(function () {
+        $(this).html('<span></span>请输入注册邮箱地址')
+      })
+      return false;
+    }
+    if (!regEmail.test($(".email-text").val())) {
+      $(".error-tip").eq(1).show(function () {
+        $(this).html('<span></span>请正确输入注册邮箱地址')
+      })
+      return false;
+    }
+    if ($(".email-password").val() == '') {
+      $(".error-tip").eq(1).show(function () {
+        $(this).html('<span></span>请输入登录密码！');
+      })
+      return false;
+    }
+    if ($(".code").eq(1).val() == '') {
+      $(".error-tip").eq(1).show(function () {
+        $(this).html('<span></span>请输入图片验证码！');
+      })
+      return false;
+    }
+    if ($(".code").eq(1).val() != $(".code-num").eq(1).children().text()) {
+      $(".error-tip").eq(1).show(function () {
+        $(this).html('<span></span>请输入正确的验证码！')
+      })
+      return false;
+    }
+    let isSuccess = 1;
+    let agreedVal = $('input:checkbox[name="agreed"]').eq(1).prop("checked");
+    if (!agreedVal) {
+      $(".error-tip").eq(1).show(function () {
+        $(this).html('<span></span>请先阅读并接受隐私政策！')
+      })
+      isSuccess = 0;
+    }
+    if (isSuccess == 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  //  存入cookie 下一页面使用
+  $(".user_mobile_submit").click(function () {
+    if ($(".phone-text").val() != "") {
+      let s = sessionStorage;
+      s.setItem("data", $(".phone-text").val())
+    }
+  })
+</script>

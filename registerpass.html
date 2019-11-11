@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>安踏帐号注册安全验证</title>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+  <header></header>
+  <section>
+    <div class="register-wrap" style="margin-bottom: 20px">
+      <div class="lgnheader" style="width: 100%; height: 100px;">
+        <div class="lgnheader-logo">
+          <span style="color: #666;font-size:20px">安踏帐号注册安全验证</span>
+        </div>
+      </div>
+      <div class="username_registerpass_box">
+        <div class="main-box">
+          <span class="main-box-text" style="color: #000;font-weight: 600;font-size: 14px">为了保护帐号安全，需要验证手机有效性</span>
+          <form action="" method="post">
+            <input type="text" name="username" class="username" style="color: #999;font-size:16px" disabled>
+            <input type="password" placeholder="登录密码" name="password" class="password">
+            <!-- <input type="password" placeholder="确认密码" name="password" class="password"> -->
+            <input class="code" type="text" maxlength="4" placeholder="短信验证码">
+            <div class="code-num">
+              <span class="code-num-l"></span>
+              <span class="code-num-l"></span>
+              <span class="code-num-l"></span>
+              <span class="code-num-l"></span>
+            </div>
+            <div class="error">
+              <span class="error-tip"></span>
+            </div>
+            <input id="user_mobile_submit" value="确认" class="submit" type="button" onclick="checkFun()">
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer></footer>
+</body>
+</html>
+<script src="js/jQuery.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+  $("header").load("loginpublic.html header", function () { });
+  $("footer").load("loginpublic.html footer", function () {
+    $("footer p").css({
+      fontSize: 14
+    })
+  });
+  $(function () {
+    var oCodeBtn = document.querySelector(".code-num");
+    function codeNum(n) {
+      var str = "0123456789";
+      var t = "";
+      for (var i = 0; i < n; i++) {
+        var index = Math.floor(Math.random() * 10);
+        t = str.charAt(index);
+      }
+      return t;
+    }
+    function show() {
+      $(".code-num-l").each(function (i) {
+        $(this).html(codeNum(1))
+      })
+    }
+    oCodeBtn.onclick = show;
+    window.onload = function () {
+      show();
+      let ls = sessionStorage;
+      let json = ls.getItem("data");
+      // console.log(json);
+      $(".username").val(json)
+    }
+  })
+  function checkFun(){
+    //判断
+    let userID = parseInt(Math.random()*999999+4000000)
+    let username = $(".username").val();
+    let password = $(".password").val();
+    let code = $(".code").val();
+    if(password ==""){
+      $(".error-tip").show(function(){
+        $(this).html('<span></span>请输入密码！')
+      })
+      return;
+    }
+    if(code == ""){
+      $(".error-tip").show(function(){
+        $(this).html('<span></span>请输入验证码！')
+      })
+      return;
+    }
+    if(code != $(".code-num").children().text()){
+    $(".error-tip").show(function(){
+      $(this).html('<span></span>短信验证码错误，请重新输入！')
+    })
+      return;
+    }
+    // Ajax提交数据
+    $.ajax({
+      url: "PHP/register.php",    // 提交到的url路径
+      type: "post",    // 提交方式
+      data: {"username": username, "password": password,"userID":userID},  // data为String类型，必须为 Key/Value 格式。
+      dataType: "json",    // 服务器端返回的数据类型
+      success: function (str) {
+        // console.log(str);
+        if (str == 1) {    
+        //跳转到系统首页
+        window.location.href = "index.html";
+        $.cookie('username',username,{ expires: 7 });
+        $.cookie('userID',userID,{ expires: 7 });
+        }else{
+          alert('该用户名已存在,请前往登录')
+        }
+      }
+    });
+  }
+</script>

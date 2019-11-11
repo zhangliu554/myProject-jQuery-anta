@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>安踏官网登录</title>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <header></header>
+  <section>
+    <div class="login-box">
+      <div class="login-wrap">
+        <!--表单输入登录-->
+        <!-- header s -->
+        <div class="lgnheader" style="width: 100%; height: 100px;">
+          <div class="lgnheader-logo">
+            <img src="images/logo.png">
+          </div>
+        </div>
+        <!-- header e -->
+        <div class="username_login_box">
+          <div class="main-box">
+            <form action="" method="post">
+              <input type="text" placeholder="邮箱/手机号码/安踏账号" class="username">
+              <input type="password" placeholder="密码" class="password">
+              <input class="code" type="text" maxlength="4" placeholder="请输入验证码" style="display: none">
+              <div class="code-num codeNum" style="display: none">
+                <span class="code-num-r"></span>
+                <span class="code-num-r"></span>
+                <span class="code-num-r"></span>
+                <span class="code-num-r"></span>
+              </div>
+              <div class="error">
+                <span class="error-tip" style="font-size: 12px;padding: 10px 0 0"></span>
+              </div>
+              <input id="user_mobile_submit" value="立即登录" type="button" onclick="loginCkeck()">
+            </form>
+          </div>
+        </div>
+        <!-- 其他登录方式 s -->
+        <div style="display: block;width:358px;margin:0 auto;" class="other_login_type sns-login-container">
+          <div class="field">
+            <fieldset class="oth_type_tit">
+              <legend class="oth_type_txt">其他方式登录</legend>
+            </fieldset>
+          </div>
+          <div class="oth_type_links">
+            <a class="icon_type btn_weixin" data-type="weixin" href="http://www.anta.cn/pass/loginwechat"></a>
+            <a class="icon_type btn_alipay" data-type="alipay" href="https://auth.alipay.com" title="支付宝登录"></a> 
+            <a class="icon_type btn_qq" data-type="qq" href="https://graph.qq.com" title="QQ登录"></a> 
+            <a class="icon_type btn_weibo" data-type="weibo" href="https://api.weibo.com" title="微博登录"></a> 
+          </div>
+        </div>
+        <!-- 其他登录方式 e -->
+        <div class="n_links_area">
+          <a class="outer-link" href="register.html">帐号注册</a><span>|</span>
+          <a class="outer-link" href="">忘记密码</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer></footer>
+</body>
+</html>
+<script src="js/jQuery.js"></script>
+<script src="js/code.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+  $("header").load("loginpublic.html header", function () { });
+  $("footer").load("loginpublic.html footer", function () { });
+  // 验证用户名密码
+  function loginCkeck(){
+    let username = $(".username").val();
+    let password = $(".password").val();
+    let code = $(".code").val();
+    if(username ==""){
+      $(".error-tip").show(function(){
+        $(this).html('请输入帐号')
+      })
+      return;
+    }
+    if(password ==""){
+      $(".error-tip").show(function(){
+        $(this).html('请输入密码')
+      })
+      return;
+    }
+    // if(code == ""){
+    //   $(".error-tip").show(function(){
+    //     $(this).html('请输入验证码')
+    //   })
+    //   return;
+    // }
+    // if(code != $(".code-num").children().text()){
+    // $(".error-tip").show(function(){
+    //   $(this).html('验证码不正确')
+    // })
+    //   return;
+    // }
+    // Ajax提交数据
+    $.ajax({
+      url: "PHP/login.php",    // 提交到的url路径
+      type: "post",    // 提交方式
+      data: {"username": username, "password": password}, // data为String类型，必须为 Key/Value 格式。
+      // dataType: "json",   
+      success: function (str){
+        let obj = str.split(" ")
+        let name = obj[0];
+        let ID = obj[1];
+        if(username == obj[0]){
+          window.location.href = "index.html";
+          $.cookie('username',name,{ expires: 7 });
+          $.cookie('userID',ID,{ expires: 7 });
+        }else{
+          $(".error-tip").show(function(){
+            $(this).html('用户名或密码不正确')
+          // alert("用户名或密码不正确")
+            // $(".code").css({display:"inline-block"});
+            // $(".codeNum").css({display:"inline-block"});
+            // if(code == ""){
+            //   $(".error-tip").show(function(){
+            //     $(this).html('请输入验证码')
+            //   })
+            //   return;
+            // }
+            // if(code != $(".code-num").children().text()){
+            // $(".error-tip").show(function(){
+            //   $(this).html('验证码不正确')
+            // })
+            //   return;
+            // }
+          })
+        }
+      }
+    });
+  }
+</script>

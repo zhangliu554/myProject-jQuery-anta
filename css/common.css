@@ -1,0 +1,15 @@
+@charset "utf-8";
+body,ol,ul,li,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select,figure,figcaption{margin:0;padding:0}
+*{box-sizing: border-box;}
+body{font-family:"微软雅黑";}
+body,html{height:100%;}
+h1,h2,h3,h4,h5,h6{font-size:16px;font-weight:normal;}
+a{text-decoration: none;color: #333;}
+b,strong{font-weight:normal;}
+i,em{font-style:normal;}
+ul,ol,li{list-style:none;}
+img{display:block;border:0;}
+input{outline:none;border:0;}
+.clear_fix:after{content:".";clear:both;height:0;overflow:hidden;display:block;visibility: hidden;}/*height:0; 保证低版本浏览器兼容 */
+.con{margin:0 auto;width:1190px;}
+.hide{display: none}

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>安踏商城购物车</title>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/public.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <style>
+    .tool-link{
+    position: relative;
+    float: left;
+    right: -2px;
+    }
+    .tool-link .child-pl {
+      padding: 1px 10px 0px 12px;
+    }
+    .tool-link .welcome {
+      padding-left: 12px;
+      margin-right: 12px;
+      background: none;
+    }
+    .tool-link dl.child-node{
+      position: absolute;
+      right: -80px;
+    }
+    .tool-link .child-pl {
+      padding: 1px 10px 0px 12px;
+    }
+    .tool-link dt{
+      position: relative;
+      float: left;
+      width: 78px;
+      height: 24px;
+      z-index: 10;
+      text-indent: 9px;
+      margin: 0px 2px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: transparent;
+    }
+    .tool-link dd{
+      display: none;
+      position: absolute;
+      right: 0px;
+      top: -2px;
+      width: 78px;
+      padding-bottom: 5px;
+      line-height: 22px;
+      z-index: 1;
+      background: rgb(255, 255, 255);
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(221, 221, 221);
+      border-image: initial;
+    }
+    .tool-link .sub {
+      padding-left: 3px;
+    }
+    .tool-link .sub a{
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .tool-link dt i{
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: url(images/public.sprite.png) -21px 2px no-repeat;
+    overflow: hidden;
+    transition: transform .2s ease-in;
+  }
+  .tool-link a:hover{
+    color: #dd0000;
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <div id="top-tool">
+      <div class="con">
+        <div class="g-toolbar">
+          <ul class="top-list clear_fix">
+            <li><a href="#"><span></span>收藏安踏</a></li>
+            <li>|</li>
+            <li><a href="ANTAbrandsite.html" target="_blank">品牌官网</a></li>
+            <li>|</li>
+            <li><a href="#">企业团购</a></li>
+            <li>|</li>
+            <li class="global"><a href="#"><span class="mui-global-iconfont"></span>手机商城</a></li>
+          </ul>
+        </div>
+        <div class="tool-links" id="tool-link">
+          <div class="tool-link hide">
+            <span class="welcome child-node">你好，欢迎来到安踏官方商城！</span>
+            <span id="logReg" class="logReg">
+              <a href="login.html" target="_blank" class="child-node">请登录</a>
+              <a href="register.html" target="_blank" class="child-node">免费注册</a>
+            </span>
+          </div>
+          <div class="tool-link">
+            <span class="welcome child-node" style="width:200px;overflow:hidden;">您好，<span class="user-name"></span>，欢迎来安踏官方商城！
+            </span>
+            <a href="#" class="child-node child-pl">我的订单</a>
+            <dl class="child-node" id="JmyCount">
+              <dt style="margin:-28px 2px 0 350px;">
+                <a href="#" target="_blank" class="myID">我的帐号</a><i></i>
+              </dt>
+              <dd class="dd">
+                <ul class="sub">
+                  <li><a href="#">我的定制安踏</a></li>
+                  <li><a href="#">优惠券</a></li>
+                  <li><a href="#">我的收藏</a></li>
+                  <li><a href="#">积分查询</a></li>
+                  <li><a class="out" style="cursor: pointer;">安全退出</a></li>
+                </ul>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="izl-rmenu">
+      <a class="btn btn-qq"><img src="images/r_qq.png" alt=""></a>
+      <a class="btn btn-phone">
+        <img src="images/r_phone.png" alt="">
+        <div class="phone">400-858-2020</div>
+      </a>
+    </div>
+  </header>
+  <section>
+    <div id="header-simple" class="clear_fix">
+      <div class="header-con con clear_fix">
+        <div id="logo">
+          <a href="index.html">
+            <img src="http://img.anta.cn/images/2015/cn_logo.png" title="返回ANTA 官方商城首页" alt="返回ANTA 官方商城首页"
+              class="png_bg">
+          </a>
+        </div>
+        <div class="cartnew-title clear_fix">
+          <ul class="clear_fix">
+            <li><span class="act">我的购物车</span></li>
+            <li><span>填写核对订单信息</span></li>
+            <li class="end"><span>成功提交订单</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="cartBox">
+      <div class="w_cart">
+        <div class="cart-hd group">
+          <h2>我的购物车
+            <div class="cart-coupons">
+              <!-- 领取优惠券 -->
+            </div>
+          </h2>
+        </div>
+        <div class="cart-inner cart-empty">
+          <div class="message">
+            <p>购物车内暂时没有商品，您可以
+              <a href="list.html">马上去挑选商品</a> 或
+              <a href="#">查看我的收藏</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <table class="w_cart_table hide">
+        <thead>
+          <tr>
+            <td width="50"><input data-cart="toggle-cb" id="checkAll" type="checkbox" checked=""></td>
+            <td width="80">商品编号</td>
+            <td width="120">商品图片</td>
+            <td style="text-align: left">商品信息</td>
+            <td width="150">单价</td>
+            <td width="200">商品数量</td>
+            <td width="80">删除商品</td>
+          </tr>
+        </thead>
+        <tbody>
+          <!--  购物车商品 -->
+        </tbody>
+        <tfoot>
+          <tr id="js_purchase"></tr>
+          <tr class="cart_toolbar">
+            <td colspan="8">
+              <h2 class="coupons-title">可用的优惠券</h2>
+              <div class="coupons-wrap">
+                <div class="coupons-tabs clear_fix">
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr class="cart_toolbar" style="background:#fff0e7;">
+            <td colspan="5">
+              <div class="w_message" style="padding-left:20px;">
+                <input placeholder="选填:对本次交易的说明(建议填写已和客服协商一致的内容)" onfocus="$(this).hide();$(this).next().show();"
+                  style="float: left">
+                <textarea placeholder="选填:对本次交易的说明(建议填写已和客服协商一致的内容)" style="display:none;float: left;width: 479px; height: 100px;
+                border: 1px solid #ccc; resize: none;">
+                </textarea>
+              </div>
+            </td>
+            <td colspan="6">
+              <div class="coupon_use_input " style="text-align: left;font-size: 16px">
+                <p style="padding-bottom:6px;">
+                  <label>选择的商品件数</label><span class="totle-num">0</span>件<br>
+                  <label>商品总金额</label><span class="c_red totle_price">0</span>
+                </p>
+              </div>
+            </td>
+          </tr>
+          <tr class="cart_toolbar">
+            <td colspan="4">
+              <div class="control">
+                <span class="delete">
+                  <a style="cursor: pointer;" class="delete-check">删除选中的商品</a>
+                  <a style="cursor: pointer;" class="clear-cart">清空购物车</a>
+                </span>
+              </div>
+            </td>
+            <td colspan="6" class="total_box">
+              <p>
+                <label title="全场包邮">全场包邮</label>
+                <span class="c_red" id="feeId">+¥0.00</span> </p>
+              <p>
+                <label for="应付金额">应付金额</label>
+                <span class="c_red total_price" id="Jfinal">0</span>
+              </p>
+            </td>
+          </tr>
+          <tr class="cart_total">
+            <td colspan="8">
+              <a href="mask.html" class="continue">继续购物</a>
+              <a class="account">提交订单</a>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+  <footer></footer>
+</body>
+</html>
+<script src="js/jQuery.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+  $("footer").load("public.html footer");
+  $(".tool-link a").hover(function(){
+    $(this).css({color:"#dd0000"})
+  },function(){
+    $(this).css({color:""})
+  })
+  let dd =  $(".sub").parent();
+  $("#JmyCount").hover(function(){
+    dd.stop().show();
+  },function(){
+    dd.stop().hide();
+  })
+  if($.cookie('username') == "null" || $.cookie('username') == undefined){
+		$(".tool-link").eq(0).stop().show();
+    $(".tool-link").eq(1).stop().hide();
+	}else{
+  	$(".tool-link").eq(1).stop().show();
+    $(".tool-link").eq(0).stop().hide();
+		$(".user-name").text($.cookie('username'));
+		$(".out").click(function(){
+			$.cookie('username', null, -1); 
+			$.cookie('userID', null, -1);
+			$(this).attr("href","cart.html") 
+		})
+  }
+</script>
